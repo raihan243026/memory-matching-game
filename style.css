@@ -1,0 +1,121 @@
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #f0f4f8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #333;
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .header p {
+      font-size: 1.2rem;
+      color: #666;
+    }
+
+    .game-container {
+      display: grid;
+      grid-template-columns: repeat(4, 100px);
+      gap: 10px;
+      max-width: 440px;
+      perspective: 1000px;
+    }
+
+    .card {
+      width: 100px;
+      height: 100px;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.5s;
+    }
+
+    /* Checkbox hack for flip effect */
+    .card input[type="checkbox"] {
+      display: none;
+    }
+
+    .card input[type="checkbox"]:checked + .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-inner {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      transform-style: preserve-3d;
+      transition: transform 0.5s;
+    }
+
+    .card-front,
+    .card-back {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      backface-visibility: hidden;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-front {
+      background-color: #3498db;
+      color: white;
+    }
+
+    .card-back {
+      background-color: #ecf0f1;
+      transform: rotateY(180deg);
+    }
+
+    /* Unique emoji backgrounds for matching pairs */
+    .emoji-1 .card-back { background: #e74c3c url('https://images.unsplash.com/photo-1513104890138-7c749659a680') center/cover; }
+    .emoji-2 .card-back { background: #2ecc71 url('https://images.unsplash.com/photo-1565299624946-b28f40a0ae38') center/cover; }
+    .emoji-3 .card-back { background: #f1c40f url('https://images.unsplash.com/photo-1604382354936-07c5d9983bd3') center/cover; }
+    .emoji-4 .card-back { background: #9b59b6 url('https://images.unsplash.com/photo-1540189549336-e6e99c3679fe') center/cover; }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .footer {
+      margin-top: 2rem;
+      text-align: center;
+      color: #666;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 500px) {
+      .game-container {
+        grid-template-columns: repeat(2, 100px);
+        max-width: 220px;
+      }
+      .header h1 {
+        font-size: 2rem;
+      }
+      .header p {
+        font-size: 1rem;
+      }
+    }
+  
